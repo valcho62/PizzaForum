@@ -11,7 +11,7 @@ namespace PizzaForumApp.Services
 
         public bool LoginUser(LoginBindingModel model, HttpSession session)
         {
-            var user = contex.Users.FirstOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            var user = Data.Data.Contex.Users.FirstOrDefault(x => x.Username == model.Username && x.Password == model.Password);
             if (user != null)
             {
                 var sessio = new Session();
@@ -19,8 +19,8 @@ namespace PizzaForumApp.Services
                 sessio.IsActive = true;
                 sessio.User = user;
 
-                contex.Sessions.Add(sessio);
-                contex.SaveChanges();
+                Data.Data.Contex.Sessions.Add(sessio);
+                Data.Data.Contex.SaveChanges();
                 return true;
             }
 

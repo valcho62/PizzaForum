@@ -6,11 +6,11 @@ namespace PizzaForumApp.Services
 {
     public abstract class Service
     {
-        public PizzaForumContex contex;
 
+        public PizzaForumContex Contex { get;  }
         protected Service()
         {
-            this.contex = new PizzaForumContex();
+            this.Contex = Data.Data.Contex;
         }
     }
 }

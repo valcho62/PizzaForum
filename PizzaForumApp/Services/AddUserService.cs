@@ -13,7 +13,7 @@ namespace PizzaForumApp.Services
         {
             var regUsername = Regex.Match(model.Username, "[a-z0-9]*");
             var regPassword = Regex.Match(model.Password, "[0-9]*");
-            if (this.contex.Users.Any(x => x.Username == model.Username || x.Email == model.Email))
+            if (Data.Data.Contex.Users.Any(x => x.Username == model.Username || x.Email == model.Email))
             {
                 return false;
             }
@@ -39,7 +39,7 @@ namespace PizzaForumApp.Services
             user.Username = model.Username;
             user.Email = model.Email;
             user.Password = model.Password;
-            if (this.contex.Users.Count() == 0)
+            if (Data.Data.Contex.Users.Count() == 0)
             {
                 user.IsAdmin = true;
             }
@@ -47,8 +47,8 @@ namespace PizzaForumApp.Services
             {
                 user.IsAdmin = false;
             }
-            this.contex.Users.Add(user);
-            this.contex.SaveChanges();
+            Data.Data.Contex.Users.Add(user);
+            Data.Data.Contex.SaveChanges();
         }
     }
 }

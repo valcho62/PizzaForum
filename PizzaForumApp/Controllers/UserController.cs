@@ -12,11 +12,11 @@ namespace PizzaForumApp.Controllers
     public class UserController:Controller
     {
         public SignInManager manager;
-        PizzaForumContex contex = new PizzaForumContex();
+       
         public UserController()
         {
 
-            this.manager = new SignInManager(contex);
+            this.manager = new SignInManager();
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace PizzaForumApp.Controllers
             var service = new LoginService();
             if (service.LoginUser(model,session))
             {
-                Redirect(response,"");
+                Redirect(response,"/home/indexlogged");
             }
             return this.View();
         }
